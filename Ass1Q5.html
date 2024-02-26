@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge and Remove Duplicates</title>
+    <script>
+        function mergeAndRemoveDuplicates(array1, array2) {
+            // Merge the arrays using the spread operator
+            const mergedArray = [...array1, ...array2];
+
+            // Use a Set to remove duplicates and convert back to array
+            const uniqueArray = [...new Set(mergedArray)];
+
+            return uniqueArray;
+        }
+
+        function handleMerge() {
+            // Get input values from the form
+            const array1Input = document.getElementById('array1Input').value;
+            const array2Input = document.getElementById('array2Input').value;
+
+            // Parse the input values into arrays
+            const array1 = array1Input.split(',').map(Number);
+            const array2 = array2Input.split(',').map(Number);
+
+            // Use the mergeAndRemoveDuplicates function
+            const result = mergeAndRemoveDuplicates(array1, array2);
+
+            // Display the result
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = `Merged and unique array: [${result.join(', ')}]`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Merge and Remove Duplicates</h1>
+    <form>
+        <label for="array1Input">Enter array 1 (comma-separated):</label>
+        <input type="text" id="array1Input" required>
+        <br>
+        <label for="array2Input">Enter array 2 (comma-separated):</label>
+        <input type="text" id="array2Input" required>
+        <br>
+        <button type="button" onclick="handleMerge()">Merge and Remove Duplicates</button>
+    </form>
+    <p id="result"></p>
+</body>
+</html>

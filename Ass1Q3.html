@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swap Case</title>
+</head>
+<body>
+
+  <label for="inputString">Enter a string:</label>
+  <input type="text" id="inputString">
+  <button onclick="swapCase()">Swap Case</button>
+  <p id="result"></p>
+
+  <script>
+    function swapCase() {
+      const inputString = document.getElementById("inputString").value;
+      const resultElement = document.getElementById("result");
+
+      const swappedString = inputString
+        .split('')
+        .map(char => {
+          if (char === char.toUpperCase()) {
+            return char.toLowerCase();
+          } else {
+            return char.toUpperCase();
+          }
+        })
+        .join('');
+
+      resultElement.textContent = `Swapped Case: ${swappedString}`;
+    }
+  </script>
+
+</body>
+</html>

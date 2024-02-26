@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Pair with Sum</title>
+    <script>
+        function findPairWithSum() {
+            const arrayInput = document.getElementById('arrayInput').value;
+            const targetInput = document.getElementById('targetInput').value;
+
+            const array = arrayInput.split(',').map(Number);
+            const target = parseInt(targetInput);
+
+            const result = findPairWithSumFunction(array, target);
+
+            const resultElement = document.getElementById('result');
+            if (result) {
+                resultElement.textContent = `Pair found at indices ${result[0]} and ${result[1]}`;
+            } else {
+                resultElement.textContent = "No pair found with the given sum";
+            }
+        }
+
+        function findPairWithSumFunction(arr, target) {
+           
+            for (let i = 0; i < arr.length; i++) {
+                
+                for (let j = i + 1; j < arr.length; j++) {
+                    
+                    if (arr[i] + arr[j] === target) {
+                        // Return the indices of the pair
+                        return [i, j];
+                    }
+                }
+            }
+
+            // If no pair is found, return null
+            return null;
+        }
+    </script>
+</head>
+<body>
+    <h1>Find Pair with Sum</h1>
+    <form>
+        <label for="arrayInput">Enter array (comma-separated):</label>
+        <input type="text" id="arrayInput" required>
+        <br>
+        <label for="targetInput">Enter target sum:</label>
+        <input type="number" id="targetInput" required>
+        <br>
+        <button type="button" onclick="findPairWithSum()">Find Pair</button>
+    </form>
+    <p id="result"></p>
+</body>
+</html>
